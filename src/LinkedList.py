@@ -1,4 +1,5 @@
-TASK 1 : class Node:
+#TASK 1 : 
+class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -7,7 +8,8 @@ node = Node(15)
 print(node.data)
 print(node.next)
 
-TASK 2 : class Node:
+#TASK 2 : 
+class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -41,7 +43,8 @@ my_list.append(30)
 my_list.append(40)
 my_list.print_list()
 
-TASK 3 : (OH WAIT I HAVE TO ADD THESE TOGETHER OHHHH MY BAD ILL START DOING IT FROM TASK 4 SORRY I HAVE NEVER USED GIT)class Node:
+#TASK 3 :
+class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -80,7 +83,8 @@ my_list.append(40)
 my_list.insert_at_beginning(10)
 my_list.print_list()
 
-TASK 4 :   class Node:
+#TASK 4 :   
+class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -118,15 +122,14 @@ class LinkedList:
             current = current.next
         print("None")
 
-
-print("Task 4")
 list_4 = LinkedList()
 for number in (10, 20, 40):
     list_4.append(number)
 list_4.insert_after(20, 30)
 list_4.print_list()
 
-Task 5:   class Node:
+#Task 5:   
+class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -168,15 +171,14 @@ class LinkedList:
             current = current.next
         print("None")
 
-
-print("Task 5")
 list_5 = LinkedList()
 for number in (10, 20, 30, 40, 50):
     list_5.append(number)
 list_5.delete(30)
 list_5.print_list()
 
-task 6 :    class Node:
+#task 6 :    
+class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -205,15 +207,14 @@ class LinkedList:
             current = current.next
         print("Element tapılmadı.")
 
-
-print("Task 6")
 list_6 = LinkedList()
 for number in (10, 20, 30, 40):
     list_6.append(number)
 list_6.search(30)
 list_6.search(99)
 
-task 7 :   class Node:
+#task 7 :   
+class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -241,14 +242,13 @@ class LinkedList:
             current = current.next
         return count
 
-
-print("Task 7")
 list_7 = LinkedList()
 for number in (11, 22, 33, 44, 55):
     list_7.append(number)
 print("List length =", list_7.length())
 
-task 8 :  class Node:
+#task 8 :  
+class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -282,8 +282,6 @@ class LinkedList:
             current = current.next
         return maximum, minimum
 
-
-print("Task 8")
 list_8 = LinkedList()
 for number in (23, 8, 91, 15, 42):
     list_8.append(number)
@@ -291,7 +289,8 @@ maximum, minimum = list_8.find_max_min()
 print("Maximum:", maximum)
 print("Minimum:", minimum)
 
-task 9 :   class Node:
+#task 9 :   
+class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -328,12 +327,96 @@ class LinkedList:
             current = current.next
         print("None")
 
-
-print("Task 9")
 list_9 = LinkedList()
 for number in (10, 20, 30, 40, 50):
     list_9.append(number)
 list_9.reverse()
 list_9.print_list()
 
-task 10 : UNFINISHED DUE TO LACK OF TIME
+#task 10 :
+class StudentNode:
+    def __init__(self, student_id, student_name, gpa):
+        self.student_id = student_id
+        self.student_name = student_name
+        self.gpa = gpa
+        self.next = None
+
+
+def print_student(student):
+    print(f"ID: {student.student_id}, Name: {student.student_name}, GPA: {student.gpa}")
+
+
+class StudentList:
+    def __init__(self):
+        self.head = None
+
+    def add_student(self, student_id, student_name, gpa):
+        new_student = StudentNode(student_id, student_name, gpa)
+        if self.head is None:
+            self.head = new_student
+            return
+        current = self.head
+        while current.next is not None:
+            current = current.next
+        current.next = new_student
+
+    def remove_student(self, student_id):
+        if self.head is None:
+            print("Tələbə tapılmadı.")
+            return
+        if self.head.student_id == student_id:
+            self.head = self.head.next
+            return
+        current = self.head
+        while current.next is not None and current.next.student_id != student_id:
+            current = current.next
+        if current.next is None:
+            print("Tələbə tapılmadı.")
+            return
+        current.next = current.next.next
+
+    def show_all(self):
+        current = self.head
+        while current is not None:
+            print_student(current)
+            current = current.next
+
+    def show_high_gpa(self):
+        current = self.head
+        while current is not None:
+            if current.gpa > 80:
+                print_student(current)
+            current = current.next
+
+    def search_by_name(self, name):
+        current = self.head
+        while current is not None:
+            if current.student_name.lower() == name.lower():
+                print_student(current)
+                return
+            current = current.next
+        print("Tələbə tapılmadı.")
+
+    def count_students(self):
+        count = 0
+        current = self.head
+        while current is not None:
+            count += 1
+            current = current.next
+        return count
+
+students = StudentList()
+students.add_student(1, "Ali", 85)
+students.add_student(2, "Leyla", 92)
+students.add_student(3, "Murad", 74)
+students.add_student(4, "Aysel", 88)
+print("All students:")
+students.show_all()
+print("GPA above 80:")
+students.show_high_gpa()
+print("Search by name (Leyla):")
+students.search_by_name("Leyla")
+students.remove_student(3)
+print("After removing ID 3:")
+students.show_all()
+print("Student count:", students.count_students())
